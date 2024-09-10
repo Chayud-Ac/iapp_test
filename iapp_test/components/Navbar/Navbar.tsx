@@ -1,14 +1,19 @@
 "use client";
 import React, { useState } from "react";
 import { FaCheck, FaUser } from "react-icons/fa";
+import { CiShoppingCart } from "react-icons/ci";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
+import { useCart } from "@/context/CartProvider";
 
 const Navbar = () => {
   const [user] = useAuthState(auth); // ดึง user มาจาก session ถ้ามี ก็ แสดงว่า sign-in แล้ว ถ้าไม่มีก็ ยังไม่ได้ sign-in จะใช้เป็น logic ในการ style ตัว UI
   const [isDropdownOpen, setDropdownOpen] = useState(false); // show ตัว user information ถ้า true
+  const { cart } = useCart();
+
+  console.log(cart);
 
   const handleLogout = () => {
     auth.signOut();
@@ -28,6 +33,14 @@ const Navbar = () => {
         <div className={styles.userMenu}>
           {user ? (
             <>
+              {cart.length > 0 && (
+                <div className={styles.cartContainer}>
+                  <CiShoppingCart size={26} color="white" />
+                  {cart.length > 0 && (
+                    <span className={styles.cartCount}>{cart.length}</span>
+                  )}
+                </div>
+              )}
               <FaCheck size={12} color="white" />
               <div className={styles.dropdown}>
                 <button className={styles.userIcon} onClick={toggleDropdown}>
