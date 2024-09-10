@@ -1,0 +1,96 @@
+/* Navbar container */
+.navbar {
+  background-color: #333;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Flex container  */
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo styling */
+.logo a {
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+/* User menu container */
+.userMenu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* User icon (profile icon) */
+.userIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Dropdown styling */
+.dropdownContent {
+  position: absolute;
+  right: 0;
+  margin-top: 10px;
+  top: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  z-index: 1000;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+/* Text inside the dropdown */
+.dropdownContent p {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Logout button */
+.logoutButton {
+  background-color: transparent;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+}
+
+.logoutButton:hover {
+  background-color: #f0f0f0;
+}
+
+/* sign-up button  */
+.authLinks {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 10%;
+  transition: all 0.3s ease-in-out;
+}
+
+.authLinks:hover {
+  background-color: #222;
+}

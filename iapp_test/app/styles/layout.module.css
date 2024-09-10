@@ -1,0 +1,14 @@
+/* Main layout wrapper */
+/* เก็บ class ที่ apply กับ layout หริอ page . style พวก parent div */
+.layoutWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Light background color for the whole page */
+}
+
+/* Main content area */
+.mainContent {
+  flex-grow: 1;
+  padding: 20px;
+}
