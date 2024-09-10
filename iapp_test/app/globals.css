@@ -60,3 +60,12 @@ a {
 .toast.error {
   background-color: #dc3545;
 }
+
+/* heading text ของ แต่ละ page */
+.heading {
+  font-size: 2.5rem; /* Adjust the size for the heading */
+  font-weight: bold;
+  text-align: center;
+  color: var(--foreground);
+  margin-bottom: 1.5rem; /* Optional spacing below the heading */
+}

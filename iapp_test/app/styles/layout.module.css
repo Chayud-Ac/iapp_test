@@ -12,3 +12,12 @@
   flex-grow: 1;
   padding: 20px;
 }
+
+/* container หลัก ที่ใช้ กับ children ใน root route page. พวก component ใต้ navbar */
+.childContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* Ensure the container takes up the full height of the viewport */
+  background-color: #f8f9fa; /* Optional: Light background color */
+}
