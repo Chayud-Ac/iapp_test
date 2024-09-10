@@ -31,7 +31,14 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   // initial state ของ cart เป็น empty array มันจะ เก็บ เป็น array of product object ตาม type ที่เรากำหนดด้านบน
-  const [cart, setCart] = useState<CartItem[]>([]);
+  // ค่า intial ของ มัน เป็น cart ที่เก็บ ใน local storage ถ้า ไม่มี ก็เป็น empty array
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    }
+    return [];
+  });
 
   // คำนวน totalCartPrice แค่ตอนที่มีการเปลี่ยนแปลงของ ตัว cart state array
   const totalCartPrice = useMemo(() => {
@@ -80,14 +87,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
-  // เก็บ cart ใน local storage
-  useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
-    }
-  }, []);
-
+  // เมื่อ มีการเปลี่ยนแปลงของ cart ก็เก็บใน setItem ใน localStorage ด้วยค่าที่เปลี่ยนแปลง
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
