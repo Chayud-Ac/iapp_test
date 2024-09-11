@@ -13,8 +13,6 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ id, title, price, image }: ProductCardProps) => {
-  // !!TODO เพิ่ม AddToCart function ซึ่งคิดว่าน่าจะใช้ Redux Toolkit ในการเก็บ state ของ cart หรือ ใช้ context คลุม component แล้วกำหนด state ในนั้น
-
   const { addToCart } = useCart();
 
   const handleAddToCartButton = () => {
