@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheck, FaUser } from "react-icons/fa";
 import { CiShoppingCart } from "react-icons/ci";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import CartPopUp from "../CartPopUp/CartPopUp";
 import { showToast } from "@/lib/util";
 
 const Navbar = () => {
-  const [user] = useAuthState(auth); // ดึง user มาจาก session ถ้ามี ก็ แสดงว่า sign-in แล้ว ถ้าไม่มีก็ ยังไม่ได้ sign-in จะใช้เป็น logic ในการ style ตัว UI
+  const [user, loading] = useAuthState(auth); // ดึง user มาจาก session ถ้ามี ก็ แสดงว่า sign-in แล้ว ถ้าไม่มีก็ ยังไม่ได้ sign-in จะใช้เป็น logic ในการ style ตัว UI
   const [isDropdownOpen, setDropdownOpen] = useState(false); // show ตัว user information ถ้า true
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cart, setCart } = useCart();
@@ -43,7 +43,8 @@ const Navbar = () => {
           </div>
           <div className={styles.userMenu}>
             {/* โชว์ cart ทั้ง user ที่ sign-in และ ไม่ sign-in */}
-            {cart.length > 0 && (
+            {/* loading apply ทั้งสอง block เพื่อให้ชัวว่า มัน render พร้อมกัน และแก้ bug ตัว hydraton error (sever ui กับ client ui ไม่เหมือนกัน) */}
+            {cart.length > 0 && !loading && (
               <div className={styles.cartContainer} onClick={toggleCart}>
                 <CiShoppingCart size={26} color="white" />
                 {cart.length > 0 && (
@@ -51,7 +52,8 @@ const Navbar = () => {
                 )}
               </div>
             )}
-            {user ? (
+
+            {user && !loading ? (
               <>
                 <FaCheck size={12} color="white" />
                 <div className={styles.dropdown}>
