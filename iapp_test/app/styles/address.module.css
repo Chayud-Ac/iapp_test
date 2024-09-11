@@ -1,0 +1,74 @@
+.formContainer input,
+.formContainer select,
+.formContainer textarea,
+.inputField {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styling */
+.labelField {
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+/* Button container styling */
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Cancel button styling */
+.cancelButton {
+  width: 100%;
+  max-width: 4rem;
+  padding: 0.5rem;
+  background-color: #00a2c7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: #0093b3;
+}
+
+/* Save button styling */
+.saveButton {
+  width: 100%;
+  max-width: 4rem;
+  padding: 0.5rem;
+  background-color: #008000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.saveButton:hover {
+  background-color: #009111;
+}
