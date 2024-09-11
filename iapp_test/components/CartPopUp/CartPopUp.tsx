@@ -4,6 +4,7 @@ import styles from "./CartPopUp.module.css";
 import { TbXboxXFilled } from "react-icons/tb";
 import { useRouter } from "next/navigation";
 import { auth } from "@/app/firebase/config";
+import { showToast } from "@/lib/util";
 
 interface CartPopUpProps {
   onClose: () => void;
@@ -52,11 +53,17 @@ const CartPopUp: React.FC<CartPopUpProps> = ({ onClose }) => {
     const user = auth.currentUser;
     console.log(user);
     // redirect ไปหน้า address ถ้า sign-in แล้ว ถ้ายังก็ sign-in
-    if (user) {
+    if (!user) {
+      router.push("/sign-in");
+      return null;
+    }
+    // ถ้า cart empty ก็ไม่ต้อง เตือน ว่า cartEmpty
+    if (cart.length === 0) {
+      showToast("error", "Your cart is empty");
+      return null;
+    } else {
       router.push("/address");
       onClose();
-    } else {
-      router.push("/sign-in");
     }
   };
 
